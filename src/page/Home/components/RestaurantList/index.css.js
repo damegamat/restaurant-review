@@ -17,6 +17,6 @@ export const RestaurantCard = {
 export const List = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evently;
+  justify-content: space-around;
   padding: 1%;
 `;

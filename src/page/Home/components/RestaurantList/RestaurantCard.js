@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  Card,
-  CardHeader,
-  CardMedia,
-  IconButton,
-  Avatar,
-} from "@material-ui/core";
+import { CardHeader, IconButton, Avatar } from "@material-ui/core";
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
