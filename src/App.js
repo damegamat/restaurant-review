@@ -5,7 +5,7 @@ import GlobalStyles from "./index.css";
 
 import theme from "utils/theme";
 import { Navigation } from "components";
-import { Home, Details, Register } from "./page";
+import { Home, Details, Register, SignIn } from "./page";
 
 function App() {
   return (
@@ -22,6 +22,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/signin">
+            <SignIn />
           </Route>
         </Switch>
       </Router>
