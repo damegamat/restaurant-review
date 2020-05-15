@@ -1,10 +1,22 @@
 import React from "react";
-import { Grid, Container, Box, Button } from "@material-ui/core";
+import { useForm, Controller } from "react-hook-form";
+import {
+  Container,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  Button,
+  Grid,
+} from "@material-ui/core";
 
-export default function Details() {
+export default function Register() {
+  const methods = useForm();
+  const { handleSubmit, control, reset } = methods;
+  const onSubmit = (data) => console.log(data);
+
   return (
-    <Container maxWidth="md">
-      <Box m={2}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Container maxWidth="md">
         <Grid
           container
           direction="column"
@@ -12,29 +24,77 @@ export default function Details() {
           alignItems="center"
           spacing={1}
         >
+          <Controller
+            as={
+              <TextField
+                label="First Name"
+                margin="normal"
+                type="text"
+                variant="outlined"
+                fullWidth
+              />
+            }
+            name="firstName"
+            control={control}
+            defaultValue=""
+          />
+          <Controller
+            as={
+              <TextField
+                label="Last Name"
+                margin="normal"
+                type="text"
+                variant="outlined"
+                fullWidth
+              />
+            }
+            name="lastName"
+            control={control}
+            defaultValue=""
+          />
+          <Controller
+            as={
+              <TextField
+                label="Email Address"
+                margin="normal"
+                type="email"
+                variant="outlined"
+                fullWidth
+              />
+            }
+            name="email"
+            control={control}
+            defaultValue=""
+          />
+
           <Grid container justify="space-between" item xs>
-            <div>The overall average rating</div>
-            <div>X</div>
-          </Grid>
-          <Grid container justify="space-between" item xs>
-            <div>The highest rated review</div>
-            <div>X</div>
-          </Grid>
-          <Grid container justify="space-between" item xs>
-            <div>The lowest rated review</div>
-            <div>X</div>
-          </Grid>
-          <Grid container justify="center" item xs>
-            <div>Latest review</div>
-            <Box width="100%">
-              <Button>Add New</Button>
-              <div>Rate</div>
-              <div>2020/05/14</div>
-              <div>Super restauracja</div>
-            </Box>
+            <Controller
+              as={
+                <FormControlLabel
+                  control={<Checkbox color="primary" />}
+                  label="admin"
+                />
+              }
+              name="admin"
+              value="test"
+              control={control}
+              defaultValue={false}
+            />
+            <Grid container justify="center" alignItems="center" item xs>
+              <Grid item xs="6">
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="outlined"
+                  color="primary"
+                >
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
-      </Box>
-    </Container>
+      </Container>
+    </form>
   );
 }
