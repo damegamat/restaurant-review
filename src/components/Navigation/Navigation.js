@@ -16,7 +16,7 @@ export default function Navigation({ items }) {
   });
 
   const handleClick = () => {
-    history.push("/login");
+    history.push("/signin");
   };
   return (
     <AppBar position="static">
