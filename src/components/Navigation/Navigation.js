@@ -1,45 +1,38 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import { Link, useHistory } from "react-router-dom";
+import { AppBar, Button, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Navigation as S } from "./Navigation.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+export default function Navigation({ items }) {
+  let history = useHistory();
 
-export default function Navigation() {
-  const classes = useStyles();
+  const item = items.map((el) => {
+    return (
+      <S.Item>
+        <Link to={el.path}>{el.component}</Link>
+      </S.Item>
+    );
+  });
 
+  const handleClick = () => {
+    history.push("/login");
+  };
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            HomePage
-          </Typography>
-          <Button color="inherit">Logout</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar position="static">
+      <S.Toolbar>
+        <S.Nav>
+          <S.Item>
+            <IconButton edge="start" color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+          </S.Item>
+          {item}
+        </S.Nav>
+        <Button onClick={handleClick} color="inherit">
+          Logout
+        </Button>
+      </S.Toolbar>
+    </AppBar>
   );
 }

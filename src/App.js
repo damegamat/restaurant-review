@@ -12,7 +12,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <Navigation item={[{ component: "Home", path: "/" }]} />
+        <Navigation items={[{ component: "Home", path: "/" }]} />
         <Switch>
           <Route>
             <Home exact path="/" />
