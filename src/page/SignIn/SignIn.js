@@ -56,7 +56,7 @@ export default function SignIn() {
           />
 
           <Grid container justify="center" alignItems="center" item xs>
-            <Grid item xs="6">
+            <Grid item xs={6}>
               <Button
                 fullWidth
                 type="submit"
