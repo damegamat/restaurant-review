@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyles from "./index.css";
 
 import theme from "utils/theme";
@@ -14,14 +14,14 @@ function App() {
       <Router>
         <Navigation items={[{ component: "Home", path: "/" }]} />
         <Switch>
-          <Route>
-            <Home exact path="/" />
+          <Route exact path="/">
+            <Home />
           </Route>
-          <Route>
-            <Details path="/details/:id" />
+          <Route path="/details/:id">
+            <Details />
           </Route>
-          <Route>
-            <Register path="/register" />
+          <Route path="/register">
+            <Register />
           </Route>
         </Switch>
       </Router>
