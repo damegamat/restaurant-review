@@ -66,6 +66,20 @@ export default function Register() {
             control={control}
             defaultValue=""
           />
+          <Controller
+            as={
+              <TextField
+                label="Password"
+                margin="normal"
+                type="password"
+                variant="outlined"
+                fullWidth
+              />
+            }
+            name="password"
+            control={control}
+            defaultValue=""
+          />
 
           <Grid container justify="space-between" item xs>
             <Controller
