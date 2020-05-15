@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { CardHeader, IconButton, Avatar } from "@material-ui/core";
 
@@ -6,9 +7,14 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import { RestaurantCard as S } from "./index.css";
 
-export default function RestaurantCard() {
+export default function RestaurantCard({ data = { id: 1 } }) {
+  let history = useHistory();
+  const handleClick = () => {
+    console.log("ok");
+    history.push(`/details/` + data.id);
+  };
   return (
-    <S.Card>
+    <S.Card onClick={handleClick}>
       <CardHeader
         avatar={<Avatar aria-label="recipe">4.6</Avatar>}
         action={
