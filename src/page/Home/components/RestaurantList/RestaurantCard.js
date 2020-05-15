@@ -6,7 +6,7 @@ import {
   CardMedia,
   IconButton,
   Avatar,
-} from "@material-ui/core/CardHeader";
+} from "@material-ui/core";
 
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
