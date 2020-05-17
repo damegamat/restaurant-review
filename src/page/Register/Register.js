@@ -1,5 +1,8 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
+
+import axios from "data/axios";
+
 import {
   Container,
   TextField,
@@ -12,7 +15,9 @@ import {
 export default function Register() {
   const methods = useForm();
   const { handleSubmit, control, reset } = methods;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    axios.user.axiosUserRegister(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { useLocation } from "react-router-dom";
+import axios from "data/axios";
+
 import {
   Container,
   TextField,
@@ -8,11 +11,24 @@ import {
   Button,
   Grid,
 } from "@material-ui/core";
+import { axiosAuth } from "data/axios/auth.axios";
 
 export default function SignIn() {
   const methods = useForm();
   const { handleSubmit, control, reset } = methods;
-  const onSubmit = (data) => console.log(data);
+  const local = useLocation();
+
+  const hash = local.search.split("=")[1];
+
+  useEffect(() => {
+    if (hash !== "" && hash !== undefined) {
+      axios.user.axiosUserHash(hash);
+    }
+  });
+
+  const onSubmit = (data) => {
+    return axios.auth.axiosAuth(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
