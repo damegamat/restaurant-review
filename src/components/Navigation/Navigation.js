@@ -17,7 +17,7 @@ export default function Navigation({ items }) {
     } else {
       if (local.pathname == "/register") {
         setBtnText("Signin");
-      } else if (local.pathname == "/signin") {
+      } else if (local.pathname == "/login") {
         setBtnText("Register");
       }
     }
@@ -34,7 +34,7 @@ export default function Navigation({ items }) {
   const handleClick = (btnText) => {
     if (pass) {
       setBtnText("Register");
-      history.push("/signin");
+      history.push("/login");
       setPass(false);
     } else {
       if (btnText === "Register") {
@@ -42,7 +42,7 @@ export default function Navigation({ items }) {
         history.push("/register");
       } else {
         setBtnText("Register");
-        history.push("/signin");
+        history.push("/login");
       }
     }
   };

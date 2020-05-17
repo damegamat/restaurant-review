@@ -23,7 +23,7 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/signin">
+          <Route path="/login">
             <SignIn />
           </Route>
         </Switch>
