@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getUserToken } from "data/reducers/auth/selector";
 import axios from "data/axios";
 
 import {
@@ -11,23 +14,23 @@ import {
   Button,
   Grid,
 } from "@material-ui/core";
-import { axiosAuth } from "data/axios/auth.axios";
 
-export default function SignIn() {
+const SignIn = () => {
   const methods = useForm();
   const { handleSubmit, control, reset } = methods;
   const local = useLocation();
-
+  const dispatch = useDispatch();
   const hash = local.search.split("=")[1];
+  const token = useSelector(getUserToken);
 
   useEffect(() => {
     if (hash !== "" && hash !== undefined) {
-      axios.user.axiosUserHash(hash);
+      axios.user.axiosUserActive(hash);
     }
   });
 
   const onSubmit = (data) => {
-    return axios.auth.axiosAuth(data);
+    dispatch(axios.auth.axiosAuth(data));
   };
 
   return (
@@ -87,4 +90,6 @@ export default function SignIn() {
       </Container>
     </form>
   );
-}
+};
+
+export default SignIn;

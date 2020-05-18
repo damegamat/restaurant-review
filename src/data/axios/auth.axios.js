@@ -1,13 +1,14 @@
 import axios from "axios";
 import baseUrl from "./baseURL";
+import { userLoginAction } from "data/reducers/auth/actions";
 
-export async function axiosAuth(data) {
-  return await axios
+export const axiosAuth = (data) => (dispatch) => {
+  axios
     .post(`${baseUrl}auth`, data)
-    .then((data) => {
-      console.log("Success:", data);
+    .then((res) => {
+      dispatch(userLoginAction(res));
     })
     .catch((error) => {
-      console.error("Error:", error);
+      alert("Error:", error);
     });
-}
+};
