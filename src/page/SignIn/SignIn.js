@@ -3,7 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getUserToken } from "data/reducers/auth/selector";
+import { getUserToken } from "data/reducers/auth/selectors";
 import axios from "data/axios";
 
 import {
@@ -22,7 +22,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const hash = local.search.split("=")[1];
   const token = useSelector(getUserToken);
-
+  console.log(token);
   useEffect(() => {
     if (hash !== "" && hash !== undefined) {
       axios.user.axiosUserActive(hash);
