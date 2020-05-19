@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getUserToken } from "data/reducers/auth/selectors";
@@ -19,17 +19,23 @@ const SignIn = () => {
   const methods = useForm();
   const { handleSubmit, control, reset } = methods;
   const local = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
   const hash = local.search.split("=")[1];
   const token = useSelector(getUserToken);
-  console.log(token);
+
   useEffect(() => {
     if (hash !== "" && hash !== undefined) {
       axios.user.axiosUserActive(hash);
     }
-  });
+
+    if (token) {
+      history.push("/");
+    }
+  }, [token, hash]);
 
   const onSubmit = (data) => {
+    console.log("DZIALAM");
     dispatch(axios.auth.axiosAuth(data));
   };
 

@@ -1,1 +1,1 @@
-export const getUserToken = (state) => state;
+export const getUserToken = (state) => state.authReducer.token;

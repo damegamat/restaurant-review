@@ -10,7 +10,6 @@ import { RestaurantCard as S } from "./index.css";
 export default function RestaurantCard({ data = { id: 1 } }) {
   let history = useHistory();
   const handleClick = () => {
-    console.log("ok");
     history.push(`/details/` + data.id);
   };
   return (
